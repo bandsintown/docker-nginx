@@ -1,5 +1,3 @@
-[![](https://badge.imagelayers.io/bandsintown/nginx:consul.svg)](https://imagelayers.io/?images=bandsintown/nginx:consul 'Get your own badge on imagelayers.io')
-
 # Consul Nginx image
 
 This image inherits from the ```bandsintown/nginx``` image adding support to manage the  Nginx configuration through [Consul](https://consul.io/)
