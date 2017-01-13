@@ -7,7 +7,7 @@ This image inherits from the ```bandsintown/nginx``` image adding support to man
 It includes : 
   - [S6 Overlay](https://github.com/just-containers/s6-overlay) to properly manage multiple services in one container
   - [Consul template](https://github.com/hashicorp/consul-template) to manage dynamic configuration based on Consul
-  - [Fileconsul](https://github.com/foostan/fileconsul) an utility to synchronize files on Consul
+
 
 # Usage
 
@@ -27,21 +27,6 @@ FROM bandsintown/nginx:consul
 
 ADD etc/consul-template /etc/consul-template
 ```
-
-## Fileconsul
-
-The following example use [Fileconsul](https://github.com/foostan/fileconsul) to synchronize configuration files with Consul: 
-
-```
-docker run --name nginx-consul \ 
--e CONSUL_URL=localhost:8500 \
--e FILECONSUL_PREFIX=app \
--e FILECONSUL_DC=local \
--e FILECONSUL_BASEPATH=/app/etc \
--d bandsintown/nginx:consul
-```
-
-This synchronize the configuration files in Consul defined in the KV folder ```app``` in the local directory ```/app/etc```, then [reload](etc/periodic/1min/fileconsul) the nginx process.
 
 # Load Balancing Sample
 
