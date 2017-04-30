@@ -1,3 +1,5 @@
+[![Build status](https://badge.buildkite.com/165611aa336f9a6aab9241891827364d80e9612c254f24923c.svg)](https://buildkite.com/bandsintown/docker-nginx)
+
 # What is Nginx?
 
 ![logo](logo.png)
@@ -70,7 +72,8 @@ docker run --name some-nginx -d some-custom-nginx
 Sometimes, it might be necessary to change the Nginx configuration dynamically for example to add hosts to achieve load balancing.
 
 The [Alpine Base image](https://github.com/bandsintown/docker-alpine) bundle a [DNS Resolver](https://github.com/janeczku/go-dnsmasq) 
-and [Consul Template](https://github.com/hashicorp/consul-template) in order to achieve this goal. With Consul template is easy to create a dynamic loadbalancer based on Nginx dynamic upstreams.
+and [Consul Template](https://github.com/hashicorp/consul-template) in order to achieve this goal. 
+With Consul template it is easy to create a dynamic load balancer based on Nginx dynamic upstreams.
 
 To enable Consul template you just have to define an entrypoint and the Consul address:
 
