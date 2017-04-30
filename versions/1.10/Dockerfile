@@ -1,8 +1,5 @@
-#
-# Nginx image
-#
-
 FROM bandsintown/alpine:3.4
+
 MAINTAINER Bandsintown Devops Team "devops@bandsintown.com"
 
 ENV NGINX_VERSION 1.10.2
@@ -126,8 +123,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log \
 	&& echo -ne "- with `nginx -v 2>&1`\n" >> /root/.built
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
+COPY rootfs /
 
 EXPOSE 80 443
 

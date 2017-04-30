@@ -1,0 +1,13 @@
+version: '2'
+
+# Defines the services
+services:
+
+  # Nginx
+  test-nginx:
+    image: bandsintown/nginx-test:${VERSION}
+    command: "bats ."
+    ports:
+      - 80
+    environment:
+      - VERSION=${VERSION}
