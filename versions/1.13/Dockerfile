@@ -2,7 +2,7 @@ FROM bandsintown/alpine:3.5
 
 MAINTAINER Bandsintown Devops Team "devops@bandsintown.com"
 
-ENV NGINX_VERSION 1.13.0
+ENV NGINX_VERSION 1.13.1
 
 RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& CONFIG="\
@@ -139,6 +139,6 @@ COPY rootfs /
 
 EXPOSE 80
 
-STOPSIGNAL SIGQUIT
+STOPSIGNAL SIGTERM
 
 CMD ["nginx", "-g", "daemon off;"]
