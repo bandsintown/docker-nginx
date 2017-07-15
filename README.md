@@ -78,7 +78,7 @@ With Consul template it is easy to create a dynamic load balancer based on Nginx
 To enable Consul template you just have to define an entrypoint and the Consul address:
 
 ```
-docker run --entrypoint=/init -e CONSUL_ADDRESS=demo.consul.io bandsintown/nginx
+docker run --entrypoint=/init -e CONSUL_HTTP_ADDR=demo.consul.io bandsintown/nginx
 ```
 
 # Build
