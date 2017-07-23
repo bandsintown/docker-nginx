@@ -21,6 +21,7 @@ valid_commands[help]="Display this help"
 
 declare -A valid_options
 valid_options["--version"]="The version we want to build, tests or release"
+valid_options["--versions"]="Comma separated list of versions to build, tests or release"
 valid_options["--verbose"]="Display commands to run"
 valid_options["--build"]="Build images before running tests"
 valid_options["--tests"]="Comma separated list of tests to run"
@@ -140,9 +141,10 @@ tests(){
   done
 }
 
+
 release(){
-#  test -n "${DOCKERHUB_USERNAME}" || { error "Please set the variable DOCKERHUB_USERNAME to release."; exit 1;}
-#  test -n "${DOCKERHUB_PASSWORD}" || { error "Please set the variable DOCKERHUB_PASSWORD to release."; exit 1;}
+  test -n "${DOCKERHUB_USERNAME}" || { error "Please set the variable DOCKERHUB_USERNAME to release."; exit 1;}
+  test -n "${DOCKERHUB_PASSWORD}" || { error "Please set the variable DOCKERHUB_PASSWORD to release."; exit 1;}
   build
   info "Login to Docker Hub..."
   docker login --username "${DOCKERHUB_USERNAME}" --password "${DOCKERHUB_PASSWORD}"
