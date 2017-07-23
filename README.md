@@ -1,5 +1,10 @@
-[![Build status](https://badge.buildkite.com/165611aa336f9a6aab9241891827364d80e9612c254f24923c.svg)](https://buildkite.com/bandsintown/docker-nginx)
+[![dockeri.co](http://dockeri.co/image/bandsintown/nginx)](https://hub.docker.com/r/bandsintown/nginx/)
 
+[![Build status](https://badge.buildkite.com/f78e045c0b561ba33f80f3c996ccfe89b49ade24b832f92bfd.svg)](https://buildkite.com/bandsintown/docker-nginx)
+[![GitHub issues](https://img.shields.io/github/issues/bandsintown/docker-nginx.svg "GitHub issues")](https://github.com/bandsintown/docker-nginx)
+[![GitHub stars](https://img.shields.io/github/stars/bandsintown/docker-nginx.svg "GitHub stars")](https://github.com/bandsintown/docker-nginx)
+[![Docker layers](https://images.microbadger.com/badges/image/bandsintown/nginx.svg)](http://microbadger.com/images/bandsintown/nginx)
+	
 # What is Nginx?
 
 ![logo](logo.png)
