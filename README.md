@@ -80,10 +80,10 @@ The [Alpine Base image](https://github.com/bandsintown/docker-alpine) bundle a [
 and [Consul Template](https://github.com/hashicorp/consul-template) in order to achieve this goal. 
 With Consul template it is easy to create a dynamic load balancer based on Nginx dynamic upstreams.
 
-To enable Consul template you just have to define an entrypoint and the Consul address:
+To enable Consul template you just have to set the Consul address:
 
 ```
-docker run --entrypoint=/init -e CONSUL_HTTP_ADDR=demo.consul.io bandsintown/nginx
+docker run -e CONSUL_HTTP_ADDR=demo.consul.io bandsintown/nginx
 ```
 
 # Build
