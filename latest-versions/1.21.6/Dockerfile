@@ -58,7 +58,6 @@ RUN set -x \
                 bash \
                 alpine-sdk \
                 findutils \
-		apache2-utils \
             && su nobody -s /bin/sh -c " \
                 export HOME=${tempDir} \
                 && cd ${tempDir} \
