@@ -16,6 +16,7 @@ steps:
 
   - label: ":hammer::docker: Run tests"
     if: build.env("VERSION") != "NA"
+    command: "bats ."
     plugins:
       - docker-compose#v5.2.0:
           cli-version: 1
