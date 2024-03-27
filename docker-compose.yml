@@ -1,0 +1,18 @@
+version: "3"
+
+# Defines the services
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./versions/${VERSION}/Dockerfile
+
+  nginx-tests:
+    build:
+      context: .
+      dockerfile: ./versions/${VERSION}/Dockerfile-tests
+    command: "bats ."
+    ports:
+      - 80
+    environment:
+      - VERSION=${VERSION}
