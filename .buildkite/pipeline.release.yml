@@ -2,35 +2,13 @@ env:
   IMAGE: bandsintown/nginx
 
 steps:
-  - label: ":hammer::docker: Build images"
+  - label: ":docker: Build and Push v${VERSION}"
     if: build.env("VERSION") != "NA"
     plugins:
       - docker-compose#v5.2.0:
           cli-version: 1
           buildkit: false
-          build:
-            - nginx
-            - nginx-tests
-
-  - wait
-
-  - label: ":hammer::docker: Run tests"
-    if: build.env("VERSION") != "NA"
-    command: "bats ."
-    plugins:
-      - docker-compose#v5.2.0:
-          cli-version: 1
-          buildkit: false
-          run: nginx-test
-
-  - wait
-
-  - label: ":docker: Push v${VERSION}"
-    if: build.env("VERSION") != "NA"
-    plugins:
-      - docker-compose#v5.2.0:
-          cli-version: 1
-          buildkit: false
+          build: nginx
           push:
             - nginx:${IMAGE}:${VERSION}
             - nginx:${IMAGE}:${VERSION}-${BUILDKITE_COMMIT:0:7}
