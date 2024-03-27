@@ -1,0 +1,50 @@
+env:
+  PIPELINE_NAME: docker-nginx
+
+steps:
+  - input: What version do you want to build and release?
+    fields:
+      - select: Release Version
+        key: release-version
+        hint: "Only the 3 latest versions are shown"
+        required: true
+        options:
+          - label: "v1.25.4"
+            value: "1.25.4"
+          - label: "v1.21.6"
+            value: "1.21.6"
+          - label: "v1.13.8"
+            value: "1.13.8"
+
+  - block: Tag version as latest?
+    fields:
+      - select: Tag this version as latest?
+        key: version-is-latest
+        required: true
+        default: "no"
+        options:
+          - label: "Yes"
+            value: "yes"
+          - label: "No"
+            value: "no"
+
+  - wait
+
+  - label: Trigger Build and Release pipeline
+    command: |
+      VERSION="$$(buildkite-agent meta-data get release-version --default 'NA')"
+      VERSION_IS_LATEST="$$(buildkite-agent meta-data get version-is-latest --default 'NA')"
+
+      cat <<- YAML | buildkite-agent pipeline upload
+      steps:
+        - trigger: ${PIPELINE_NAME}
+          async: true
+          label: ":construction::building_construction: Trigger deploy for version $$VERSION"
+          build:
+            commit: "${BUILDKITE_COMMIT}"
+            branch: "${BUILDKITE_BRANCH}"
+            env:
+              VERSION: "$$VERSION"
+              VERSION_IS_LATEST: "$$VERSION_IS_LATEST"
+              DEPLOY_SERVICE: release
+      YAML
